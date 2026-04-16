@@ -31,7 +31,7 @@ public class FoundItem implements Supplier<Item> {
                 .filter(item.get()::equals)
                 .findFirst()
                 .isPresent();
-        LOG.debug((present ? "Found" : "Didn't find") + " item: " + item.get() + ", in: " + items.get());
+        LOG.debug("{} item: {}, in: {}", present ? "Found" : "Didn't find", item.get(), items.get());
         return present;
     }
 }
