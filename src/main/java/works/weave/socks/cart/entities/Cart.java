@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Document
 public class Cart {
@@ -55,10 +56,8 @@ public class Cart {
 
         Cart cart = (Cart) o;
 
-        if (customerId != null ? !customerId.equals(cart.customerId) : cart.customerId != null) return false;
-        if (id != null ? !id.equals(cart.id) : cart.id != null) return false;
-
-        return true;
+        return Objects.equals(customerId, cart.customerId) &&
+                Objects.equals(id, cart.id);
     }
 
     @Override
