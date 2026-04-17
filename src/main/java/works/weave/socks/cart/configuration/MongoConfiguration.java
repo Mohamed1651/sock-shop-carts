@@ -15,7 +15,6 @@ public class MongoConfiguration {
     public MongoClientOptions optionsProvider() {
         MongoClientOptions.Builder optionsBuilder = new MongoClientOptions.Builder();
         optionsBuilder.serverSelectionTimeout(10000);
-        MongoClientOptions options = optionsBuilder.build();
-        return options;
+        return optionsBuilder.build();
     }
 }
