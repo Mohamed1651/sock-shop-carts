@@ -28,7 +28,7 @@ public class CartContentsResource implements Contents<Item> {
     @Override
     public Runnable add(Supplier<Item> item) {
         return () -> {
-            LOG.debug("Adding for user: " + parent.get().value().get().toString() + ", " + item.get());
+            LOG.debug("Adding for user: {}, {}", parent.get().value().get(), item.get());
             cartRepository.save(parentCart().add(item.get()));
         };
     }
@@ -36,7 +36,7 @@ public class CartContentsResource implements Contents<Item> {
     @Override
     public Runnable delete(Supplier<Item> item) {
         return () -> {
-            LOG.debug("Deleting for user: " + parent.get().value().get().toString() + ", " + item.get());
+            LOG.debug("Deleting for user: {}, {}", parent.get().value().get(), item.get());
             cartRepository.save(parentCart().remove(item.get()));
         };
     }
