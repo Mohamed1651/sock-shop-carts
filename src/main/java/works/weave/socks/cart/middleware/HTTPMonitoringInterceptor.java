@@ -43,6 +43,6 @@ public class HTTPMonitoringInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse
-            httpServletResponse, Object o, Exception e) throws Exception {
+            httpServletResponse, Object o, Exception e) throws Exception { // not needed
     }
 }

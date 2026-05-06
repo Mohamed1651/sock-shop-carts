@@ -16,8 +16,11 @@ import java.util.Map;
 @RestController
 public class HealthCheckController {
 
+    private final MongoTemplate mongoTemplate;
     @Autowired
-    private MongoTemplate mongoTemplate;
+    public HealthCheckController(MongoTemplate mongoTemplate){
+        this.mongoTemplate = mongoTemplate;
+    }
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET, path = "/health")

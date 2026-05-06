@@ -29,6 +29,9 @@ public class UnitHealthCheckController {
     @Autowired
     private HealthCheckController healthCheckController;
 
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
     @Test
     public void shouldGetHealth() {
        Map<String, List<HealthCheck>> results = this.healthCheckController.getHealth();
@@ -39,7 +42,7 @@ public class UnitHealthCheckController {
     static class HealthCheckControllerTestConfiguration {
         @Bean
         public HealthCheckController healthCheckController() {
-            return new HealthCheckController();
+            return new HealthCheckController(mongoTemplate());
         }
 
         @Bean
