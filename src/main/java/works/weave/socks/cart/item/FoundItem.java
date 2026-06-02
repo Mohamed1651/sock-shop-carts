@@ -28,7 +28,9 @@ public class FoundItem implements Supplier<Item> {
 
     public boolean hasItem() {
         boolean present = items.get().stream()
-                .anyMatch(item.get()::equals);
+                .filter(item.get()::equals)
+                .findFirst()
+                .isPresent();
         LOG.debug("{} item: {}, in: {}", present ? "Found" : "Didn't find", item.get(), items.get());
         return present;
     }

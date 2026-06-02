@@ -48,7 +48,7 @@ public class ItemsController {
         FoundItem foundItem = new FoundItem(() -> cartsController.get(customerId).contents(), () -> item);
         if (!foundItem.hasItem()) {
             Supplier<Item> newItem = new ItemResource(itemDAO, () -> item).create();
-            LOG.debug("Found item in cart. Incrementing for user: {}, {}", customerId, newItem);
+            LOG.debug("Did not find item. Creating item for user: {}, {}", customerId, newItem.get());
             new CartResource(cartDAO, customerId).contents().get().add(newItem).run();
             return item;
         } else {

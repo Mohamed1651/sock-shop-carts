@@ -4,7 +4,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
-import java.util.Objects;
 
 @Document
 public class Item {
@@ -72,8 +71,8 @@ public class Item {
     }
 
     @Override
-    public int hashCode(){
-        return Objects.hash(itemId);
+    public int hashCode() {
+        return itemId != null ? itemId.hashCode() : 0;
     }
 
     // ****** Crappy getter/setters for Jackson JSON invoking ********
