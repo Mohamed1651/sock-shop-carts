@@ -75,12 +75,12 @@ public class UnitCartsController {
     static class ItemsControllerTestConfiguration {
         @Bean
         public ItemsController itemsController() {
-            return new ItemsController();
+            return new ItemsController(itemDAO(), cartsController(), cartDAO());
         }
 
         @Bean
         public CartsController cartsController() {
-            return new CartsController();
+            return new CartsController(cartDAO());
         }
 
         @Bean

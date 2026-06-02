@@ -21,13 +21,16 @@ import static org.slf4j.LoggerFactory.getLogger;
 @RequestMapping(value = "/carts/{customerId:.*}/items")
 public class ItemsController {
     private final Logger LOG = getLogger(getClass());
+    private final ItemDAO itemDAO;
+    private final CartsController cartsController;
+    private final CartDAO cartDAO;
 
     @Autowired
-    private ItemDAO itemDAO;
-    @Autowired
-    private CartsController cartsController;
-    @Autowired
-    private CartDAO cartDAO;
+    public ItemsController(ItemDAO itemDAO, CartsController cartsController, CartDAO cartDAO){
+        this.itemDAO = itemDAO;
+        this.cartsController = cartsController;
+        this.cartDAO = cartDAO;
+    }
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/{itemId:.*}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)

@@ -15,9 +15,12 @@ import works.weave.socks.cart.entities.Cart;
 @RequestMapping(path = "/carts")
 public class CartsController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final CartDAO cartDAO;
 
     @Autowired
-    private CartDAO cartDAO;
+    public CartsController(CartDAO cartDAO){
+        this.cartDAO = cartDAO;
+    }
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/{customerId}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)

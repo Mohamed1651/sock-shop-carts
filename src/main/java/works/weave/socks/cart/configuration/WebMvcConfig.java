@@ -9,17 +9,16 @@ import works.weave.socks.cart.middleware.HTTPMonitoringInterceptor;
 
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
-    @Autowired
-    private HTTPMonitoringInterceptor httpMonitoringInterceptor;
 
     @Bean
-    HTTPMonitoringInterceptor httpMonitoringInterceptor() {
+    public HTTPMonitoringInterceptor httpMonitoringInterceptor() {
         return new HTTPMonitoringInterceptor();
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(httpMonitoringInterceptor)
+        // Call the bean method directly here
+        registry.addInterceptor(httpMonitoringInterceptor())
                 .addPathPatterns("/**");
     }
 }
